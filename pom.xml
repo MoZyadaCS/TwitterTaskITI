@@ -48,14 +48,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-<<<<<<< HEAD
-=======
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>1.5.2.Final</version>
-        </dependency>
->>>>>>> 8ada25e (cleaning the code)
     </dependencies>
 
     <build>
