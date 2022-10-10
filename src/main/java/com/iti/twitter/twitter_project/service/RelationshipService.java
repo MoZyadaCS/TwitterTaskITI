@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RelashionshipService {
+public class RelationshipService {
     private RelationshipRepo relationshipRepo;
 
-    public RelashionshipService (RelationshipRepo relationshipRepo){
+    public RelationshipService(RelationshipRepo relationshipRepo){
         this.relationshipRepo = relationshipRepo;
     }
 

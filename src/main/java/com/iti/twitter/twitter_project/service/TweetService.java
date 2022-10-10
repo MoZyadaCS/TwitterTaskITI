@@ -7,9 +7,7 @@ import com.iti.twitter.twitter_project.model.TweetEntity;
 import com.iti.twitter.twitter_project.repository.TweetRepo;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,8 +19,6 @@ public class TweetService {
     }
 
     public TweetResponseDto addTweet(TweetRequestDto tweet){
-        tweet.setCreatedAt(new Timestamp(new Date().getTime()));
-        tweet.setUpdatedAt(new Timestamp(new Date().getTime()));
         TweetEntity tweetEntity = tweetRepo.save(TweetMapper.tweetRequestToTweetEntity(tweet));
         return TweetMapper.tweetEntityToTweetResponse(tweetEntity);
     }
@@ -40,5 +36,6 @@ public class TweetService {
             response.add(TweetMapper.tweetEntityToTweetResponse(tweet));
         }
         return response;
+        
     }
 }

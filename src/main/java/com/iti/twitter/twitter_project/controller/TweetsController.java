@@ -2,8 +2,7 @@ package com.iti.twitter.twitter_project.controller;
 
 import com.iti.twitter.twitter_project.dto.TweetRequestDto;
 import com.iti.twitter.twitter_project.dto.TweetResponseDto;
-import com.iti.twitter.twitter_project.model.TweetEntity;
-import com.iti.twitter.twitter_project.service.RelashionshipService;
+import com.iti.twitter.twitter_project.service.RelationshipService;
 import com.iti.twitter.twitter_project.service.TweetService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +13,12 @@ import java.util.List;
 @RestController
 public class TweetsController {
     private TweetService tweetService;
-    private RelashionshipService relashionshipService;
+    private RelationshipService relationshipService;
 
 
-    public TweetsController (TweetService tweetService,RelashionshipService relashionshipService){
+    public TweetsController (TweetService tweetService, RelationshipService relationshipService){
         this.tweetService = tweetService;
-        this.relashionshipService = relashionshipService;
+        this.relationshipService = relationshipService;
     }
 
 
@@ -34,7 +33,7 @@ public class TweetsController {
     @GetMapping("/tweets/follows/{id}")
     public ResponseEntity<List<TweetResponseDto>> getTweetsOfFollowers(@PathVariable Long id){
         // get all the ids for the follows of this id
-        List<Long> ids = relashionshipService.getAllRelationShipsByFollowerID(id);
+        List<Long> ids = relationshipService.getAllRelationShipsByFollowerID(id);
         // get all the tweets for each user in the follows
         List<TweetResponseDto> tweets = tweetService.getAllTweetsIn(ids);
         return new ResponseEntity<>(tweets,HttpStatus.FOUND);

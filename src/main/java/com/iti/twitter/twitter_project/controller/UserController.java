@@ -33,8 +33,6 @@ public class UserController {
     }
     @PostMapping("/users/add")
     public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto user){
-        user.setCreatedAt(new Timestamp(new Date().getTime()));
-        user.setUpdatedAt(new Timestamp(new Date().getTime()));
         return new ResponseEntity<>(userService.save(user),HttpStatus.CREATED);
     }
     @PostMapping("/users/update")

@@ -20,6 +20,7 @@ public class UserService {
     }
 
     public UserResponseDto save(UserRequestDto user){
+
         return UserMapper.userEntityToUserResponse(usersRepo.save(UserMapper.userRequestToUserEntity(user)));
     }
 
